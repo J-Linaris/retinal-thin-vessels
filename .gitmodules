@@ -1,0 +1,3 @@
+[submodule "external/DSE-skeleton-pruning"]
+	path = external/DSE-skeleton-pruning
+	url = https://github.com/originlake/DSE-skeleton-pruning.git
