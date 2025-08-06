@@ -1,4 +1,0 @@
-scikit-image
-networkx>2.3
-sknw
-cython

@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "retinal_thin_vessels"
+version = "0.1.0"
+authors = [
+    {name = "João Paulo Menezes Linaris", email = "joaolinaris@gmail.com"},
+]
+description = "A Python package for analyzing thin retinal vessels and creating vessels-thickness based weight maps"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT License"}
+keywords = ["retina", "vessels", "segmentation", "image-analysis", "medical-imaging", "weight-map"]
+classifiers = [
+    'Intended Audience :: Science/Research',
+    'License :: OSI Approved :: MIT License', 
+    'Operating System :: POSIX :: Linux',        
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+]
+
+dependencies = [
+    "numpy",
+    "torch",
+    "scikit-image",
+    "Pillow",      
+]
+
+[project.urls]
+Homepage = "https://github.com/J-Linaris/retinal_thin_vessels"
+Repository = "https://github.com/J-Linaris/retinal_thin_vessels"
+
