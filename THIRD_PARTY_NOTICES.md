@@ -2,7 +2,7 @@
 
 This project incorporates the following third-party software:
 
-## [Name of the External Project]
+## DSE
 
 -   **Location:** `/external`
 -   **License:** MIT License
