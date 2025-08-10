@@ -1,6 +1,6 @@
 from PIL import Image
-from thin_vessels.metrics import recall_thin_vessels, precision_thin_vessels
-from thin_vessels.core import get_thin_vessels_mask
+from recal_thin_vessels.metrics import recall_thin_vessels, precision_thin_vessels
+from recal_thin_vessels.core import get_thin_vessels_mask
 
 def main():
 

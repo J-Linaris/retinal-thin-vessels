@@ -11,8 +11,12 @@ authors = [
 description = "A Python package for analyzing thin retinal vessels and creating vessels-thickness based weight maps"
 readme = "README.md"
 requires-python = ">=3.8"
-license = {text = "MIT License"}
-keywords = ["retina", "vessels", "segmentation", "image-analysis", "medical-imaging", "weight-map"]
+license = "MIT"
+license-files = ["LICENSE"]
+keywords = ["retina", "retinal", "retinal-vessels", "vessel-segmentation",
+        "image-analysis", "medical-imaging", "deep-learning",
+        "weight-map", "pytorch", "thin-vessels", "image-segmentation", "binary-masks",
+        "binary-mask"]
 classifiers = [
     'Intended Audience :: Science/Research',
     'License :: OSI Approved :: MIT License', 
