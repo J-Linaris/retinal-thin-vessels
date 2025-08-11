@@ -1,23 +1,46 @@
 from PIL import Image
-from recal_thin_vessels.metrics import recall_thin_vessels, precision_thin_vessels
-from recal_thin_vessels.core import get_thin_vessels_mask
+# from retinal_thin_vessels.metrics import recall_thin_vessels, precision_thin_vessels
+from core import get_thin_vessels_mask
+from metrics import recall_thin_vessels, precision_thin_vessels
+import numpy as np
+from sklearn.metrics import recall_score, precision_score
 
 def main():
 
     example_components_path = "imgs/"   
-    img = Image.open(f"{example_components_path}img_example.png")
-    seg = Image.open(f"{example_components_path}seg_example.png")
-    pred = Image.open(f"{example_components_path}pred_example.png")
+    # DRIVE IMAGES
+    img = Image.open(f"{example_components_path}DRIVE_img_example.png")
+    seg = Image.open(f"{example_components_path}DRIVE_seg_example.png")
+    pred = Image.open(f"{example_components_path}DRIVE_pred_example.png")
     
-    # Gets the filtered mask with only thin vessels
-    thin_vessels_seg = get_thin_vessels_mask(seg)
+    # # Gets the filtered mask with only thin vessels
+    # thin_vessels_seg = get_thin_vessels_mask(seg)
     
-    print("Showing the filtered segmentation mask with thin vessels only.")
-    img = Image.fromarray(thin_vessels_seg)
-    img.show()
+    # print("Showing the filtered segmentation mask with thin vessels only. DRIVE")
+    # img = Image.fromarray(thin_vessels_seg)
+    # # img.show()
+    # img.save("DRIVE_seg_thin_example.png")
 
-    print(recall_thin_vessels(seg.resize(pred.size, Image.NEAREST), pred))
-    # print(__precision_thin_vessels_single_image(seg.resize(pred.size, Image.NEAREST), pred))
+    # # CHASEDB1 IMAGES
+    # seg = Image.open(f"{example_components_path}CHASEDB1_seg_example.png")
+    
+    # # Gets the filtered mask with only thin vessels
+    # thin_vessels_seg = get_thin_vessels_mask(seg)
+    
+    # print("Showing the filtered segmentation mask with thin vessels only. CHASEDB1")
+    # img = Image.fromarray(thin_vessels_seg)
+    # # img.show()
+    # img.save("CHASEDB1_seg_thin_example.png")
+    print(np.array(seg.resize(pred.size, Image.NEAREST)).shape)
+    print(np.array(pred).shape)
+    print(np.unique(np.array(seg.resize(pred.size, Image.NEAREST)).astype(np.uint8)))
+    print(np.unique((np.array(pred)/255).astype(np.uint8)))
+    print(f"Overall Recall score: {recall_score(np.array(seg.resize(pred.size, Image.NEAREST)).astype(np.uint8), (np.array(pred)/255).astype(np.uint8))}")
+    print(f"Recall score on thin vessels: {recall_thin_vessels(seg.resize(pred.size, Image.NEAREST), pred)}")
+    print(f"Overall Precision score: {precision_score(seg.resize(pred.size, Image.NEAREST), pred)}")
+    print(f"Precision score on thin Vessels: {precision_thin_vessels(seg.resize(pred.size, Image.NEAREST), pred)}")
+
+    
 
     exit(0)
 
