@@ -10,7 +10,7 @@ pip install retinal_thin_vessels
 
 ## Functions demonstrations using DRIVE and CHASEDB1
 
-This package offers functions for computing the recall and precision metrics on thin vessels. However, it's necessary to understand the ground truth these functions consider, in order to give these metrics reliability. Therefore, we offer, aswel, a function that returns the filtered mask when passed a segmentation mask. Below, the code for generating this masks using three diferent public datasets: DRIVE, CHASEDB1 and FIVES is shown in order to exemplify the usage of this package. 
+This package offers functions for computing the recall and precision metrics on thin vessels. However, it's necessary to understand the ground truth these functions consider, in order to give these metrics reliability. Therefore, we offer, aswel, a function that returns the filtered mask when passed a segmentation mask. Below, the code for generating this masks using three diferent public datasets: DRIVE and CHASEDB1 is shown in order to exemplify the usage of this package. 
 
 ```python
 from PIL import Image
