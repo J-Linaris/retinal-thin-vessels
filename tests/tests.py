@@ -31,15 +31,15 @@ def main():
     # img = Image.fromarray(thin_vessels_seg)
     # # img.show()
     # img.save("CHASEDB1_seg_thin_example.png")
+
     print(np.array(seg.resize(pred.size, Image.NEAREST)).shape)
     print(np.array(pred).shape)
     print(np.unique(np.array(seg.resize(pred.size, Image.NEAREST)).astype(np.uint8)))
     print(np.unique((np.array(pred)/255).astype(np.uint8)))
-    print(f"Overall Recall score: {recall_score(np.array(seg.resize(pred.size, Image.NEAREST)).astype(np.uint8), (np.array(pred)/255).astype(np.uint8))}")
+    print(f"Overall Recall score: {recall_score(np.array(seg.resize(pred.size, Image.NEAREST)).reshape(-1), (np.array(pred)/255).reshape(-1))}")
     print(f"Recall score on thin vessels: {recall_thin_vessels(seg.resize(pred.size, Image.NEAREST), pred)}")
-    print(f"Overall Precision score: {precision_score(seg.resize(pred.size, Image.NEAREST), pred)}")
+    print(f"Overall Precision score: {precision_score(np.array(seg.resize(pred.size, Image.NEAREST)).reshape(-1), (np.array(pred)/255).reshape(-1))}")
     print(f"Precision score on thin Vessels: {precision_thin_vessels(seg.resize(pred.size, Image.NEAREST), pred)}")
-
     
 
     exit(0)
