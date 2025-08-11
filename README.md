@@ -30,15 +30,19 @@ seg_CDB1 = Image.open(f"tests/imgs/CHASEDB1_seg_example.png")
 thin_vessels_seg_DRIVE = get_thin_vessels_mask(seg_DRIVE)
 thin_vessels_seg_CDB1 = get_thin_vessels_mask(seg_CDB1)
 
-# Display the resulting thin-vessel-only mask for visualization
+# Display the original segmentation mask and the resulting thin-vessel-only mask for comparison
+seg_DRIVE.show()
 img_DRIVE = Image.fromarray(thin_vessels_seg_DRIVE)
 img_DRIVE.show()
+
+seg_CDB1.show()
 img_CDB1 = Image.fromarray(thin_vessels_seg_CDB1)
 img_CDB1.show()
 ```
-
-<img src="tests/imgs/DRIVE_seg_thin_example.png" alt="DRIVE_thin_vessels_example" width=400/>
-<img src="tests/imgs/CHASEDB1_seg_thin_example.png" alt="CHASEDB1_thin_vessels_example" width=400/>
+<img src="tests/imgs/DRIVE_seg_example.png" alt="DRIVE_thin_vessels_example" width=300/>
+<img src="tests/imgs/DRIVE_seg_thin_example.png" alt="DRIVE_thin_vessels_example" width=300/>
+<img src="tests/imgs/CHASEDB1_seg_example.png" alt="CHASEDB1_thin_vessels_example" width=300/>
+<img src="tests/imgs/CHASEDB1_seg_thin_example.png" alt="CHASEDB1_thin_vessels_example" width=300/>
 
 Furthermore, to demonstrate the metric calculation functions, you can run the code below. It compares the overall metrics (calculated with scikit-learn) to the thin-vessel-specific metrics calculated by this package.
 
