@@ -1,6 +1,6 @@
 # retinal_thin_vessels
 
-A Python package for computing the recall and precision scores specifically on thin vessels in retinal images, as detailed in our paper: {LINK TO YOUR PAPER}.
+A Python package for computing the recall and precision scores specifically on thin vessels in retinal images, as detailed in our paper: {LINK TO THE PAPER}. The package also includes a function for visualizing thickness-based filtered masks, the basic structure for computing the proposed metrics.
 
 ## Package installation
 
