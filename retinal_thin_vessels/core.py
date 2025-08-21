@@ -1,11 +1,9 @@
 import numpy as np
 from skimage.morphology import medial_axis, area_closing
 from PIL import Image
-import sys
 from input_transformation import prepare_ground_truth, prepare_prediction
 
-sys.path.append("../external/DSE-skeleton-pruning")
-from dsepruning import skel_pruning_DSE
+from retinal_thin_vessels.external.DSE_skeleton_pruning.dsepruning import skel_pruning_DSE
 
 def __get_shift_tuples(value):
     

@@ -19,7 +19,6 @@ keywords = ["retina", "retinal", "retinal-vessels", "vessel-segmentation",
         "binary-mask"]
 classifiers = [
     'Intended Audience :: Science/Research',
-    'License :: OSI Approved :: MIT License', 
     'Operating System :: POSIX :: Linux',        
     'Programming Language :: Python :: 3',
     'Programming Language :: Python :: 3.8',

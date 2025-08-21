@@ -1,7 +1,7 @@
 import numpy as np
 from PIL import Image
-from core import get_thin_vessels_mask
-from input_transformation import prepare_input
+from retinal_thin_vessels.core import get_thin_vessels_mask
+from retinal_thin_vessels.input_transformation import prepare_input
 import time
 
 def __recall_thin_vessels_single_image(y_true, y_pred, ceil=1.0):
