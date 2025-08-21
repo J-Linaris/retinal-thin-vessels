@@ -8,7 +8,7 @@ def _to_numpy(arr):
     to numpy array if needed.
     """
     if isinstance(arr, Image.Image):
-        arr = np.array(arr)
+        arr = np.array(arr, copy=True)
     elif isinstance(arr, torch.Tensor):
         arr = arr.detach().cpu().numpy()
     elif not isinstance(arr, np.ndarray):
@@ -51,9 +51,9 @@ def prepare_ground_truth(y_true):
     # Verifies validity of y_true
     y_true = _verify_input_validity(y_true, "y_true")
 
-    # Removes the channel dimension if necessary
-    if y_true.ndim==3:
-        y_true = y_true[0] #[1,H,W] --> [H,W]
+    # # Removes the channel dimension for input of shape [1,H,W]
+    # if y_true.ndim == 3:
+    #     y_true = y_true[0] #[1,H,W] ---> [H,W]
 
     # Ensures the values belong to {0,1}
     y_true = (y_true > 0).astype(np.uint8)
@@ -65,10 +65,10 @@ def prepare_prediction(y_pred):
     # Verifies validity of y_true
     y_pred = _verify_input_validity(y_pred, "y_pred")
 
-    # Removes the channel dimension if necessary
-    if y_pred.ndim==3:
-        y_pred = y_pred[0] #[1,H,W] --> [H,W]
-
+    # # Removes the channel dimension for input of shape [1,H,W]
+    # if y_pred.ndim == 3:
+    #     y_pred = y_pred[0] #[1,H,W] ---> [H,W]
+    
     # Ensures the values belong to {0,1}
     y_pred = (y_pred > 0.5).astype(np.uint8)
 

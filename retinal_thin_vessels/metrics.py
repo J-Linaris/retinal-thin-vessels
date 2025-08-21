@@ -1,4 +1,3 @@
-import torch
 import numpy as np
 from PIL import Image
 from core import get_thin_vessels_mask
@@ -6,17 +5,6 @@ from input_transformation import prepare_input
 import time
 
 def __recall_thin_vessels_single_image(y_true, y_pred, ceil=1.0):
-    """
-    Given inputs with the predicted and true vessel masks, returns 
-    the recall score on thin vessels. Inputs can be NumPy arrays, 
-    torch.Tensors, or PIL Images.
-
-    Inputs must have shape: (1, H, W), with values in {0, 1}, {0, 255}, 
-    or [0.0, 1.0] for probability maps.
-
-    Thin vessels are defined as those with radius less than or
-    equal to ceil.
-    """
 
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Input preparation~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
@@ -31,17 +19,6 @@ def __recall_thin_vessels_single_image(y_true, y_pred, ceil=1.0):
     return tp/(tp+fn)
 
 def __precision_thin_vessels_single_image(y_true, y_pred, ceil=1.0):
-    """
-    Given inputs with the predicted and true vessel masks, returns 
-    the precision score on thin vessels. Inputs can be NumPy arrays, 
-    torch.Tensors, or PIL Images.
-
-    Inputs must have shape: (1, H, W), with values in {0, 1}, {0, 255}, 
-    or [0.0, 1.0] for probability maps.
-
-    Thin vessels are defined as those with radius less than or
-    equal to ceil.
-    """
 
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Input preparation~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -64,7 +41,17 @@ def __f1_thin_vessels_single_image(y_true, y_pred, ceil=1.0):
     return f1
 
 def recall_thin_vessels(y_true, y_pred, ceil=1.0):
+    """
+    Returns the recall score on thin vessels given the predicted and
+    the ground-truth segmentation masks. Inputs can be NumPy arrays, 
+    torch.Tensors, or PIL Images.
 
+    Inputs must have shape: (1, H, W), with values in {0, 1}, {0, 255}, 
+    or [0.0, 1.0] for probability maps.
+
+    Thin vessels are defined as those whose radius is less than or
+    equal to 'ceil'.
+    """
     # Prepares the input
 
     y_true, y_pred = prepare_input(y_true, y_pred)
@@ -80,11 +67,26 @@ def recall_thin_vessels(y_true, y_pred, ceil=1.0):
         recall/=num_imgs
     
     else:
+        if inputs_dimension == 3:
+            y_true = y_true[0]
+            y_pred = y_pred[0]
+        
         recall = __recall_thin_vessels_single_image(y_true, y_pred, ceil)
     
     return recall
 
 def precision_thin_vessels(y_true, y_pred, ceil=1.0):
+    """
+    Returns the precision score on thin vessels given the predicted and
+    the ground-truth segmentation masks. Inputs can be NumPy arrays, 
+    torch.Tensors, or PIL Images.
+
+    Inputs must have shape: (1, H, W), with values in {0, 1}, {0, 255}, 
+    or [0.0, 1.0] for probability maps.
+
+    Thin vessels are defined as those whose radius is less than or
+    equal to 'ceil'.
+    """
 
     # Prepares the input
     
@@ -101,13 +103,27 @@ def precision_thin_vessels(y_true, y_pred, ceil=1.0):
         precision/=num_imgs
     
     else:
+        if inputs_dimension == 3:
+            y_true = y_true[0]
+            y_pred = y_pred[0]
+        
         precision = __precision_thin_vessels_single_image(y_true, y_pred, ceil)
     
     return precision
 
 
 def f1_thin_vessels(y_true, y_pred, ceil):
+    """
+    Returns the f1-score on thin vessels given the predicted and
+    the ground-truth segmentation masks. Inputs can be NumPy arrays, 
+    torch.Tensors, or PIL Images.
 
+    Inputs must have shape: (1, H, W), with values in {0, 1}, {0, 255}, 
+    or [0.0, 1.0] for probability maps.
+
+    Thin vessels are defined as those whose radius is less than or
+    equal to 'ceil'.
+    """
     # Prepares the input
     y_true, y_pred = prepare_input(y_true, y_pred)
 
@@ -123,6 +139,10 @@ def f1_thin_vessels(y_true, y_pred, ceil):
         f1 /= num_imgs
     
     else:
+        if inputs_dimension == 3:
+            y_true = y_true[0]
+            y_pred = y_pred[0]
+        
         f1 = __f1_thin_vessels_single_image(y_true, y_pred, ceil)
     
     return f1
@@ -131,21 +151,20 @@ def f1_thin_vessels(y_true, y_pred, ceil):
 def main():
 
     example_components_path = "../tests/imgs/"   
-    img = Image.open(f"{example_components_path}img_example.png")
-    seg = Image.open(f"{example_components_path}seg_example.png")
-    pred = Image.open(f"{example_components_path}pred_example.png")
+    seg = Image.open(f"{example_components_path}DRIVE_seg_example.png")
+    pred = Image.open(f"{example_components_path}DRIVE_pred_example.png")
     
     ti = time.time()
-    print(precision_thin_vessels(seg.resize(pred.size, Image.NEAREST), pred))
+    print(f"Precision on thin vessels: {precision_thin_vessels(seg.resize(pred.size, Image.NEAREST), pred)}")
     tf = time.time()
     delta = tf-ti
-    print(delta)
+    print(f"Running time for image of shape {seg.size}: {delta:.4f} sec")
 
     ti = time.time()
-    print(recall_thin_vessels(seg.resize(pred.size, Image.NEAREST), pred))
+    print(f"Recall on thin vessels: {recall_thin_vessels(seg.resize(pred.size, Image.NEAREST), pred)}")
     tf = time.time()
     delta = tf-ti
-    print(delta)
+    print(f"Running time for image of shape {seg.size}: {delta:.4f} sec")
     exit(0)
 
 

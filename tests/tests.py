@@ -1,7 +1,6 @@
 from PIL import Image
-# from retinal_thin_vessels.metrics import recall_thin_vessels, precision_thin_vessels
-from core import get_thin_vessels_mask
-from metrics import recall_thin_vessels, precision_thin_vessels
+from retinal_thin_vessels.metrics import recall_thin_vessels, precision_thin_vessels
+from retinal_thin_vessels.core import get_thin_vessels_mask
 import numpy as np
 from sklearn.metrics import recall_score, precision_score
 
@@ -9,7 +8,6 @@ def main():
 
     example_components_path = "imgs/"   
     # DRIVE IMAGES
-    img = Image.open(f"{example_components_path}DRIVE_img_example.png")
     seg = Image.open(f"{example_components_path}DRIVE_seg_example.png")
     pred = Image.open(f"{example_components_path}DRIVE_pred_example.png")
     
@@ -36,9 +34,10 @@ def main():
     print(np.array(pred).shape)
     print(np.unique(np.array(seg.resize(pred.size, Image.NEAREST)).astype(np.uint8)))
     print(np.unique((np.array(pred)/255).astype(np.uint8)))
+
     # Load the ground truth segmentation mask and a sample prediction
     pred = Image.open(f"imgs/DRIVE_pred_example.png")
-    seg_DRIVE = Image.open(f"imgs/DRIVE_seg_example.png").resize((pred.size), Image.NEAREST)
+    seg_DRIVE = seg.resize((pred.size), Image.NEAREST)
 
     # Binarize images to a 0/1 format for scikit-learn compatibility
     seg_DRIVE = np.where(np.array(seg_DRIVE) > 0, 1, 0)
