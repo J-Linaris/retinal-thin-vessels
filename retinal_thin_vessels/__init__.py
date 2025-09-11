@@ -1,4 +1,6 @@
 __all__ = [
     "core",
-    "metrics"
+    "metrics",
+    "input_transformation",
+    "get_relation"
 ]

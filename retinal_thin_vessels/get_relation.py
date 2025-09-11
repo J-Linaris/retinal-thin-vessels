@@ -1,7 +1,7 @@
 import numpy as np
 from skimage.morphology import medial_axis, area_closing
 from PIL import Image
-from retinal_thin_vessels.external.DSE_skeleton_pruning.dsepruning import skel_pruning_DSE
+from retinal_thin_vessels.external.DSE_skeleton_pruning.dsepruning.dsepruning import skel_pruning_DSE
 
 def main():
 

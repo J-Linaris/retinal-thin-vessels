@@ -1,7 +1,8 @@
 import sknw
 import numpy as np
 from skimage.draw import line
-from .dse_helper import recnstrc_by_disk, get_weight
+from dsepruning.dse_helper import recnstrc_by_disk, get_weight
+# from .dse_helper import recnstrc_by_disk, get_weight -----> original (didn't work)
 
 def flatten(l):
     return [item for sublist in l for item in sublist]
