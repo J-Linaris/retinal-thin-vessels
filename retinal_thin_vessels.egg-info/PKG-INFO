@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: retinal_thin_vessels
-Version: 0.1.5.3
+Version: 1.0
 Summary: A Python package for analyzing thin retinal vessels and creating vessels-thickness based weight maps
 Author-email: João Paulo Menezes Linaris <joaolinaris@gmail.com>
 License-Expression: MIT
