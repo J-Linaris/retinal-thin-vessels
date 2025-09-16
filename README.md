@@ -133,5 +133,6 @@ According to the study conducted in the referred paper (in which it was used the
 - W1 mask: enhances models ability in correctly detecting thin vessels, at the expense of anatomical fidelity (high recall on thin vessels and lower precision on thin vessels)
 
 Therefore, it was noticed a kind of opposite behavior provoked by each one of these masks. This conclusion and both statements above are supported by the results in the following table:
-
-<img src="misc/table_weight_masks.png" alt="CHASEDB1_W1_greyscale_weight_mask_example" width=900/>
+<p align="center">
+  <img src="misc/table_weight_masks.png" alt="CHASEDB1_W1_greyscale_weight_mask_example" width=900/>
+</p>
