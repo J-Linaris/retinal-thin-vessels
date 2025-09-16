@@ -1,5 +1,6 @@
 import numpy as np
 from skimage.morphology import medial_axis, area_closing
+from scipy.ndimage import distance_transform_edt
 from PIL import Image
 from retinal_thin_vessels.input_transformation import prepare_ground_truth, prepare_prediction
 from retinal_thin_vessels.external.DSE_skeleton_pruning.dsepruning.dsepruning import skel_pruning_DSE
@@ -28,7 +29,10 @@ def __get_filtered_mask(seg_mask, ceil=1.0):
     closed_seg_mask = area_closing(seg_mask)
 
     # Obtaining the skeleton
-    skeleton_medial_axis, distances = medial_axis(closed_seg_mask, return_distance=True)
+    skeleton_medial_axis = medial_axis(closed_seg_mask, return_distance=False)
+
+    # Get the distance of each pixel to the background
+    distances = distance_transform_edt(closed_seg_mask)
 
     # Skeleton pruning
     skeleton_medial_axis = skel_pruning_DSE(skeleton_medial_axis, distances, np.ceil(distances.max()))
@@ -80,7 +84,7 @@ def __get_filtered_mask(seg_mask, ceil=1.0):
     return filtered_seg_mask
 
 
-def get_thin_vessels_mask(seg_mask, ceil=1.0, mask_type="ground_truth"):
+def get_thin_vessels_mask(seg_mask, ceil=1.0, seg_mask_type="ground truth"):
     """
     Returns a numpy array containing the thin-vessels only mask.
 
@@ -91,11 +95,11 @@ def get_thin_vessels_mask(seg_mask, ceil=1.0, mask_type="ground_truth"):
         
     -> values: BINARY
     
-    -> mask_type: "ground_truth" or "prediction" (affects how we 
+    -> mask_type: "ground truth" or "prediction" (affects how we 
                   transform the provided mask beofre computing the 
-                  filtered one. If equal to "groun_truth", will
-                  apply a threshold of 0 for classifying pixels in the
-                  image)
+                  filtered one. If equal to "ground truth", will
+                  apply a threshold of 0 for binarizing pixels in the
+                  image (if necessary))
 
 
     Thin vessels are defined as those whose radius is less than or
@@ -103,13 +107,13 @@ def get_thin_vessels_mask(seg_mask, ceil=1.0, mask_type="ground_truth"):
     """
 
     # Input value verification
-    accepted_mask_type_values = ["ground_truth", "prediction"]
+    accepted_mask_type_values = ["ground truth", "prediction"]
 
-    if mask_type not in accepted_mask_type_values:
-        raise ValueError(f"Expected valid mask type. Accepted values: {accepted_mask_type_values}. Got: {mask_type}")
+    if seg_mask_type not in accepted_mask_type_values:
+        raise ValueError(f"Expected valid mask type. Accepted values: {accepted_mask_type_values}. Got: {seg_mask_type}")
     
     # Input preparation
-    if mask_type == "ground_truth":
+    if seg_mask_type == "ground truth":
         seg_mask = prepare_ground_truth(seg_mask)
     else:
         seg_mask = prepare_prediction(seg_mask)
@@ -137,7 +141,7 @@ def get_thin_vessels_mask(seg_mask, ceil=1.0, mask_type="ground_truth"):
         filtered_seg_mask = __get_filtered_mask(seg_mask[0], ceil)
 
         # Expands the dimension again for maintaining consistency with input shape
-        filtered_seg_mask = np.expand_dims(filtered_seg_mask, axis=0)
+        filtered_seg_mask = np.expand_dims(filtered_seg_mask, axis=0) # [H,W] -> [1,H,W]
     
     else:
         # Obtains the mask
