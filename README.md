@@ -79,6 +79,7 @@ Precision score on thin Vessels: 0.6527915897144481
 In the paper, it is proposed two weight masks formulations for setting the weight for a pixel $i$:
 - W0 formulation: $$W_i = \frac{2}{R^2}$$
 - W1 formulation: $$W_i = \frac{D_i+1}{R^2}$$
+
 where, respectively, $R$ and $D_i$ refer to the radius of the vessel to which the pixel belongs to and the pixel's distance to the background. 
 
 The following code demonstrates how to generate weight masks using images from two public datasets: DRIVE and CHASEDB1.
@@ -101,11 +102,13 @@ W_1_CHASEDB1 = get_weight_mask(seg_CDB1, weights_function=1)
 print(f"Weights in the weight mask produced by W0 formulation belong to [{W_1_DRIVE.min()},{W_1_DRIVE.max()}]")
 print(f"Weights in the weight mask produced by W0 formulation belong to [{W_1_CDB1.min()},{W_1_CDB1.max()}]")
 
-# Displays a greyscale image for each computed weight mask
+# Displays a greyscale image for each computed weight mask followed by the segmentation mask
+seg_DRIVE.show()
 W_1_DRIVE_greyscale = 255*(W_1_DRIVE - W_1_DRIVE.min())/(W_1_DRIVE.max()-W_1_DRIVE.min())
 img_DRIVE = Image.fromarray(W_1_DRIVE_greyscale.astype(np.uint8))
 img_DRIVE.show()
 
+seg_CDB1.show()
 W_1_CDB1_greyscale = 255*(W_1_CDB1 - W_1_CDB1.min())/(W_1_CDB1.max()-W_1_CDB1.min())
 img_CDB1 = Image.fromarray(W_1_CDB1_greyscale.astype(np.uint8))
 img_CDB1.show()
@@ -124,4 +127,4 @@ According to the study conducted in the referred paper (in which it was used the
 
 Therefore, it was noticed a kind of opposite behavior provoked by each one of these masks. This conclusion and both statements above are supported by the results in the following table:
 
-<img src="misc/table_weight_masks.png" alt="CHASEDB1_W1_greyscale_weight_mask_example" width=300/>
+<img src="misc/table_weight_masks.png" alt="CHASEDB1_W1_greyscale_weight_mask_example" width=900/>
