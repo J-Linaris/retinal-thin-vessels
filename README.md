@@ -99,8 +99,8 @@ seg_CDB1 = Image.open(f"tests/imgs/CHASEDB1_seg_example.png")
 # Generates the weight masks using the W1 formulation (just for example)
 W_1_DRIVE = get_weight_mask(seg_DRIVE, weights_function=1)
 W_1_CHASEDB1 = get_weight_mask(seg_CDB1, weights_function=1)
-print(f"Weights in the weight mask produced by W0 formulation belong to [{W_1_DRIVE.min()},{W_1_DRIVE.max()}]")
-print(f"Weights in the weight mask produced by W0 formulation belong to [{W_1_CDB1.min()},{W_1_CDB1.max()}]")
+print(f"Weights in the weight mask produced by W1 formulation over the DRIVE segmentation mask belong to the interval [{W_1_DRIVE.min()},{W_1_DRIVE.max()}]")
+print(f"Weights in the weight mask produced by W1 formulation over the CHASEDB1 segmentation mask belong to the interval [{W_1_CDB1.min()},{W_1_CDB1.max()}]")
 
 # Displays a greyscale image for each computed weight mask followed by the segmentation mask
 seg_DRIVE.show()
@@ -113,6 +113,13 @@ W_1_CDB1_greyscale = 255*(W_1_CDB1 - W_1_CDB1.min())/(W_1_CDB1.max()-W_1_CDB1.mi
 img_CDB1 = Image.fromarray(W_1_CDB1_greyscale.astype(np.uint8))
 img_CDB1.show()
 ```
+If the program is running correctly with the provided sample images, the results should be similar to this:
+
+```bash
+Weights in the weight mask produced by W1 formulation over the DRIVE segmentation mask belong to the interval [0.0,3.2360680103302]
+Weights in the weight mask produced by W1 formulation over the CHASEDB1 segmentation mask belong to the interval [0.0,3.0]
+```
+
 <img src="tests/imgs/DRIVE_seg_example.png" alt="CHASEDB1_thin_vessels_example" width=300/>
 <img src="tests/imgs/DRIVE_W1_grey_example.png" alt="DRIVE_W1_greyscale_weight_mask_example" width=300/>
 <img src="tests/imgs/CHASEDB1_seg_example.png" alt="CHASEDB1_thin_vessels_example" width=300/>
