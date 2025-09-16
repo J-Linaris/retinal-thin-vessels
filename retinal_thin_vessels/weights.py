@@ -162,9 +162,10 @@ def main():
 
     # Shows the filtered segmentation mask
     print("Showing the resulting greyscale weight mask")
-    weight_mask_greyscale = ((weight_mask-weight_mask.min())/(weight_mask.max()-weight_mask.min()))*255
-    img = Image.fromarray(weight_mask_greyscale.astype(np.uint8))
-    img.show()
+    print(f"Weights in the weight mask produced by W1 formulation over the DRIVE segmentation mask belong to the interval [{weight_mask.min()},{weight_mask.max()}]")
+    # weight_mask_greyscale = ((weight_mask-weight_mask.min())/(weight_mask.max()-weight_mask.min()))*255
+    # img = Image.fromarray(weight_mask_greyscale.astype(np.uint8))
+    # img.show()
 
 if __name__ == "__main__":
     main()
