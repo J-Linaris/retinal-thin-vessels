@@ -40,10 +40,10 @@ seg_CDB1.show()
 img_CDB1 = Image.fromarray(thin_vessels_seg_CDB1)
 img_CDB1.show()
 ```
-<img src="tests/imgs/DRIVE_seg_example.png" alt="DRIVE_thin_vessels_example" width=300/>
-<img src="tests/imgs/DRIVE_seg_thin_example.png" alt="DRIVE_thin_vessels_example" width=300/>
-<img src="tests/imgs/CHASEDB1_seg_example.png" alt="CHASEDB1_thin_vessels_example" width=300/>
-<img src="tests/imgs/CHASEDB1_seg_thin_example.png" alt="CHASEDB1_thin_vessels_example" width=300/>
+<img src="tests/imgs/DRIVE_seg_example.png" alt="DRIVE_thin_vessels_example.png" width=300/>
+<img src="tests/imgs/DRIVE_seg_thin_example.png" alt="DRIVE_thin_vessels_example.png" width=300/>
+<img src="tests/imgs/CHASEDB1_seg_example.png" alt="CHASEDB1_thin_vessels_example.png" width=300/>
+<img src="tests/imgs/CHASEDB1_seg_thin_example.png" alt="CHASEDB1_thin_vessels_example.png" width=300/>
 
 Furthermore, to demonstrate the metric calculation functions, you can run the code below. It compares the overall metrics (calculated with scikit-learn) with the thin-vessel-specific metrics calculated by this package.
 
@@ -120,10 +120,10 @@ Weights in the weight mask produced by W1 formulation over the DRIVE segmentatio
 Weights in the weight mask produced by W1 formulation over the CHASEDB1 segmentation mask belong to the interval [0.0,3.0]
 ```
 
-<img src="tests/imgs/DRIVE_seg_example.png" alt="CHASEDB1_thin_vessels_example" width=300/>
-<img src="tests/imgs/DRIVE_W1_grey_example.png" alt="DRIVE_W1_greyscale_weight_mask_example" width=300/>
-<img src="tests/imgs/CHASEDB1_seg_example.png" alt="CHASEDB1_thin_vessels_example" width=300/>
-<img src="tests/imgs/CHASEDB1_W1_grey_example.png" alt="CHASEDB1_W1_greyscale_weight_mask_example" width=300/>
+<img src="tests/imgs/DRIVE_seg_example.png" alt="DRIVE_thin_vessels_example.png" width=300/>
+<img src="tests/imgs/DRIVE_W1_grey_example.png" alt="DRIVE_W1_greyscale_weight_mask_example.png" width=300/>
+<img src="tests/imgs/CHASEDB1_seg_example.png" alt="CHASEDB1_thin_vessels_example.png" width=300/>
+<img src="tests/imgs/CHASEDB1_W1_grey_example.png" alt="CHASEDB1_W1_greyscale_weight_mask_example.png" width=300/>
 
 ## Overall view
 
@@ -134,5 +134,5 @@ According to the study conducted in the referred paper (in which it was used the
 
 Therefore, it was noticed a kind of opposite behavior provoked by each one of these masks. This conclusion and both statements above are supported by the results in the following table:
 <p align="center">
-  <img src="misc/table_weight_masks.png" alt="CHASEDB1_W1_greyscale_weight_mask_example" width=900/>
+  <img src="tests/misc/table_weight_masks.png" alt="weight_masks_table.png" width=900/>
 </p>

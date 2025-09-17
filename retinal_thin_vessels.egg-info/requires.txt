@@ -1,4 +1,5 @@
 numpy
 torch
 scikit-image
+scikit-learn
 Pillow

@@ -6,6 +6,7 @@ retinal_thin_vessels/core.py
 retinal_thin_vessels/get_relation.py
 retinal_thin_vessels/input_transformation.py
 retinal_thin_vessels/metrics.py
+retinal_thin_vessels/weights.py
 retinal_thin_vessels.egg-info/PKG-INFO
 retinal_thin_vessels.egg-info/SOURCES.txt
 retinal_thin_vessels.egg-info/dependency_links.txt
