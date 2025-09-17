@@ -40,10 +40,10 @@ seg_CDB1.show()
 img_CDB1 = Image.fromarray(thin_vessels_seg_CDB1)
 img_CDB1.show()
 ```
-<img src="tests/imgs/DRIVE_seg_example.png" alt="DRIVE_thin_vessels_example.png" width=300/>
-<img src="tests/imgs/DRIVE_seg_thin_example.png" alt="DRIVE_thin_vessels_example.png" width=300/>
-<img src="tests/imgs/CHASEDB1_seg_example.png" alt="CHASEDB1_thin_vessels_example.png" width=300/>
-<img src="tests/imgs/CHASEDB1_seg_thin_example.png" alt="CHASEDB1_thin_vessels_example.png" width=300/>
+<img src="tests/imgs/DRIVE_seg_example.png" alt="DRIVE_thin_vessels_example" width=450/>
+<img src="tests/imgs/DRIVE_seg_thin_example.png" alt="DRIVE_thin_vessels_example" width=450/>
+<img src="tests/imgs/CHASEDB1_seg_example.png" alt="CHASEDB1_thin_vessels_example" width=450/>
+<img src="tests/imgs/CHASEDB1_seg_thin_example.png" alt="CHASEDB1_thin_vessels_example" width=450/>
 
 Furthermore, to demonstrate the metric calculation functions, you can run the code below. It compares the overall metrics (calculated with scikit-learn) with the thin-vessel-specific metrics calculated by this package.
 
@@ -120,10 +120,10 @@ Weights in the weight mask produced by W1 formulation over the DRIVE segmentatio
 Weights in the weight mask produced by W1 formulation over the CHASEDB1 segmentation mask belong to the interval [0.0,3.0]
 ```
 
-<img src="tests/imgs/DRIVE_seg_example.png" alt="DRIVE_thin_vessels_example.png" width=300/>
-<img src="tests/imgs/DRIVE_W1_grey_example.png" alt="DRIVE_W1_greyscale_weight_mask_example.png" width=300/>
-<img src="tests/imgs/CHASEDB1_seg_example.png" alt="CHASEDB1_thin_vessels_example.png" width=300/>
-<img src="tests/imgs/CHASEDB1_W1_grey_example.png" alt="CHASEDB1_W1_greyscale_weight_mask_example.png" width=300/>
+<img src="tests/imgs/DRIVE_seg_example.png" alt="CHASEDB1_thin_vessels_example.png" width=450/>
+<img src="tests/imgs/DRIVE_W1_grey_example.png" alt="DRIVE_W1_greyscale_weight_mask_example.png" width=450/>
+<img src="tests/imgs/CHASEDB1_seg_example.png" alt="CHASEDB1_thin_vessels_example.png" width=450/>
+<img src="tests/imgs/CHASEDB1_W1_grey_example.png" alt="CHASEDB1_W1_greyscale_weight_mask_example.png" width=450/>
 
 ## Overall view
 
