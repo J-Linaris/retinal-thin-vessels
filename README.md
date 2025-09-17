@@ -1,6 +1,6 @@
 # retinal_thin_vessels
 
-A [Python package]{https://pypi.org/project/retinal-thin-vessels/} for computing the recall and precision scores specifically on thin vessels in retinal images and generating weight masks for BCE Loss to enhance models perfomance on segmenting these fine structures, as detailed in the paper "Vessel-Width-Based Metrics and Weight Masks for Retinal Blood Vessel Segmentation", published in WUW-SIBGRAPI 2025. The package also includes a function for visualizing thickness-based filtered masks, the basic structure for computing the proposed metrics.
+A [Python package](https://pypi.org/project/retinal-thin-vessels/) for computing the recall and precision scores specifically on thin vessels in retinal images and generating weight masks for BCE Loss to enhance models perfomance on segmenting these fine structures, as detailed in the paper "Vessel-Width-Based Metrics and Weight Masks for Retinal Blood Vessel Segmentation", published in WUW-SIBGRAPI 2025. The package also includes a function for visualizing thickness-based filtered masks, the basic structure for computing the proposed metrics.
 
 It is worth stating that the functions for computing these metrics and the function for obtaining the weight masks accept, as input:
 - A batch of segmentation images
