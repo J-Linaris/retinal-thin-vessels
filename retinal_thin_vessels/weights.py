@@ -79,8 +79,9 @@ def get_weight_mask(seg_mask, weights_function=0, seg_mask_type="ground truth"):
         if weights_function == 1:
             W_i = (D_i + 1) / (D_esq ** 2)
 
-    The Input is expected to be a segmentation mask, therefore, the 
-    function accepts inputs with:
+    The Input is expected to be a segmentation mask (numpy array, 
+    PIL.Image instance or torch.tensor), therefore, the function
+    accepts inputs with:
 
     -> shape: (H,W); (1,H,W); (N,1,H,W)
         
