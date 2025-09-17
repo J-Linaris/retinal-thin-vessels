@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: retinal_thin_vessels
-Version: 2.0.1
+Version: 2.1
 Summary: A Python package for analyzing thin retinal vessels and creating vessels-thickness based weight maps
 Author-email: João Paulo Menezes Linaris <joaolinaris@gmail.com>
 License-Expression: MIT
@@ -28,6 +28,12 @@ Dynamic: license-file
 # retinal_thin_vessels
 
 A Python package for computing the recall and precision scores specifically on thin vessels in retinal images and generating weight masks for BCE Loss to enhance models perfomance on segmenting these fine structures, as detailed in the paper "Vessel-Width-Based Metrics and Weight Masks for Retinal Blood Vessel Segmentation", published in WUW-SIBGRAPI 2025. The package also includes a function for visualizing thickness-based filtered masks, the basic structure for computing the proposed metrics.
+
+It is worth stating that the functions for computing these metrics and the function for obtaining the weight masks accept, as input:
+- A batch of segmentation images
+- A single segmentation image (with or without the channels dimension)
+
+In order to better understand this, you may find helpful to read the documentation of these functions.
 
 ## Package installation
 
@@ -67,10 +73,10 @@ seg_CDB1.show()
 img_CDB1 = Image.fromarray(thin_vessels_seg_CDB1)
 img_CDB1.show()
 ```
-<img src="tests/imgs/DRIVE_seg_example.png" alt="DRIVE_thin_vessels_example.png" width=300/>
-<img src="tests/imgs/DRIVE_seg_thin_example.png" alt="DRIVE_thin_vessels_example.png" width=300/>
-<img src="tests/imgs/CHASEDB1_seg_example.png" alt="CHASEDB1_thin_vessels_example.png" width=300/>
-<img src="tests/imgs/CHASEDB1_seg_thin_example.png" alt="CHASEDB1_thin_vessels_example.png" width=300/>
+<img src="tests/imgs/DRIVE_seg_example.png" alt="DRIVE_thin_vessels_example" width=450/>
+<img src="tests/imgs/DRIVE_seg_thin_example.png" alt="DRIVE_thin_vessels_example" width=450/>
+<img src="tests/imgs/CHASEDB1_seg_example.png" alt="CHASEDB1_thin_vessels_example" width=450/>
+<img src="tests/imgs/CHASEDB1_seg_thin_example.png" alt="CHASEDB1_thin_vessels_example" width=450/>
 
 Furthermore, to demonstrate the metric calculation functions, you can run the code below. It compares the overall metrics (calculated with scikit-learn) with the thin-vessel-specific metrics calculated by this package.
 
@@ -113,9 +119,7 @@ The following code demonstrates how to generate weight masks using images from t
 
 ```python
 from PIL import Image
-from retinal_thin_vessels.core import get_thin_vessels_mask
-from retinal_thin_vessels.metrics import recall_thin_vessels, precision_thin_vessels
-from sklearn.metrics import recall_score, precision_score
+from retinal_thin_vessels.weights import get_weight_mask
 ```
 
 ```python
@@ -147,10 +151,10 @@ Weights in the weight mask produced by W1 formulation over the DRIVE segmentatio
 Weights in the weight mask produced by W1 formulation over the CHASEDB1 segmentation mask belong to the interval [0.0,3.0]
 ```
 
-<img src="tests/imgs/DRIVE_seg_example.png" alt="DRIVE_thin_vessels_example.png" width=300/>
-<img src="tests/imgs/DRIVE_W1_grey_example.png" alt="DRIVE_W1_greyscale_weight_mask_example.png" width=300/>
-<img src="tests/imgs/CHASEDB1_seg_example.png" alt="CHASEDB1_thin_vessels_example.png" width=300/>
-<img src="tests/imgs/CHASEDB1_W1_grey_example.png" alt="CHASEDB1_W1_greyscale_weight_mask_example.png" width=300/>
+<img src="tests/imgs/DRIVE_seg_example.png" alt="CHASEDB1_thin_vessels_example.png" width=450/>
+<img src="tests/imgs/DRIVE_W1_grey_example.png" alt="DRIVE_W1_greyscale_weight_mask_example.png" width=450/>
+<img src="tests/imgs/CHASEDB1_seg_example.png" alt="CHASEDB1_thin_vessels_example.png" width=450/>
+<img src="tests/imgs/CHASEDB1_W1_grey_example.png" alt="CHASEDB1_W1_greyscale_weight_mask_example.png" width=450/>
 
 ## Overall view
 
@@ -163,3 +167,5 @@ Therefore, it was noticed a kind of opposite behavior provoked by each one of th
 <p align="center">
   <img src="tests/misc/table_weight_masks.png" alt="weight_masks_table.png" width=900/>
 </p>
+
+OBS: Standard weight mask (Std) stands for sklearn's compute_class_weight function, that aims soly on balancing the impact of each class in the loss function. Therefore, it only makes white and black pixels have the same impact on the loss function (it was used as the baseline for the paper). Morevoer, "WBCE" stands for Weighted Binary Cross Entropy loss.

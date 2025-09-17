@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "retinal_thin_vessels"
-version = "2.0.1"
+version = "2.1"
 authors = [
     {name = "João Paulo Menezes Linaris", email = "joaolinaris@gmail.com"},
 ]
