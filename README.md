@@ -2,6 +2,12 @@
 
 A Python package for computing the recall and precision scores specifically on thin vessels in retinal images and generating weight masks for BCE Loss to enhance models perfomance on segmenting these fine structures, as detailed in the paper "Vessel-Width-Based Metrics and Weight Masks for Retinal Blood Vessel Segmentation", published in WUW-SIBGRAPI 2025. The package also includes a function for visualizing thickness-based filtered masks, the basic structure for computing the proposed metrics.
 
+It is worth stating that the functions for computing these metrics and the function for obtaining the weight masks accept, as input:
+- A batch of segmentation images
+- A single segmentation image (with or without the channels dimension)
+
+In order to better understand this, you may find helpful to read the documentation of these functions.
+
 ## Package installation
 
 ```bash
@@ -86,9 +92,7 @@ The following code demonstrates how to generate weight masks using images from t
 
 ```python
 from PIL import Image
-from retinal_thin_vessels.core import get_thin_vessels_mask
-from retinal_thin_vessels.metrics import recall_thin_vessels, precision_thin_vessels
-from sklearn.metrics import recall_score, precision_score
+from retinal_thin_vessels.weights import get_weight_mask
 ```
 
 ```python
