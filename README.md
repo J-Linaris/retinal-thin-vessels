@@ -141,4 +141,4 @@ Therefore, it was noticed a kind of opposite behavior provoked by each one of th
   <img src="tests/misc/table_weight_masks.png" alt="weight_masks_table.png" width=900/>
 </p>
 
-OBS: Standard weight mask (Std) stands for sklearn's compute_class_weight function, that aims soly on balancing the impact of each class in the loss function. Therefore, it only makes white and black pixels have the same impact on the loss function (it was used as the baseline for the paper). Morevoer, "WBCE" stands for Weighted Binary Cross Entropy loss.
+OBS: Standard weight mask (Std) stands for sklearn's compute_class_weight function, that aims solely at balancing the impact of each class in the loss function. Therefore, it only makes white and black pixels have the same impact on the loss function (it was used as the baseline for the paper). Morevoer, "WBCE" stands for Weighted Binary Cross Entropy loss.
