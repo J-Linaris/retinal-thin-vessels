@@ -1,6 +1,6 @@
 # retinal_thin_vessels
 
-A Python package for computing the recall and precision scores specifically on thin vessels in retinal images and generating weight masks for BCE Loss to enhance models perfomance on segmenting these fine structures, as detailed in the paper "Vessel-Width-Based Metrics and Weight Masks for Retinal Blood Vessel Segmentation", published in WUW-SIBGRAPI 2025. The package also includes a function for visualizing thickness-based filtered masks, the basic structure for computing the proposed metrics.
+A [Python package](https://pypi.org/project/retinal-thin-vessels/) for computing the recall and precision scores specifically on thin vessels in retinal images and generating weight masks for BCE Loss to enhance models perfomance on segmenting these fine structures, as detailed in the paper "Vessel-Width-Based Metrics and Weight Masks for Retinal Blood Vessel Segmentation", published in WUW-SIBGRAPI 2025. The package also includes a function for visualizing thickness-based filtered masks, the basic structure for computing the proposed metrics.
 
 It is worth stating that the functions for computing these metrics and the function for obtaining the weight masks accept, as input:
 - A batch of segmentation images
@@ -141,4 +141,4 @@ Therefore, it was noticed a kind of opposite behavior provoked by each one of th
   <img src="tests/misc/table_weight_masks.png" alt="weight_masks_table.png" width=900/>
 </p>
 
-OBS: Standard weight mask (Std) stands for sklearn's compute_class_weight function, that aims soly on balancing the impact of each class in the loss function. Therefore, it only makes white and black pixels have the same impact on the loss function (it was used as the baseline for the paper). Morevoer, "WBCE" stands for Weighted Binary Cross Entropy loss.
+OBS: Standard weight mask (Std) stands for sklearn's compute_class_weight function, that aims solely at balancing the impact of each class in the loss function. Therefore, it only makes white and black pixels have the same impact on the loss function (it was used as the baseline for the paper). Morevoer, "WBCE" stands for Weighted Binary Cross Entropy loss.
