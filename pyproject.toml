@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "retinal_thin_vessels"
-version = "2.1"
+version = "2.2"
 authors = [
     {name = "João Paulo Menezes Linaris", email = "joaolinaris@gmail.com"},
 ]
@@ -37,6 +37,5 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/J-Linaris/retinal_thin_vessels"
-Repository = "https://github.com/J-Linaris/retinal_thin_vessels"
-
+Homepage = "https://github.com/J-Linaris/retinal-thin-vessels"
+Repository = "https://github.com/J-Linaris/retinal-thin-vessels"

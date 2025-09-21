@@ -1,11 +1,11 @@
 Metadata-Version: 2.4
 Name: retinal_thin_vessels
-Version: 2.1
+Version: 2.2
 Summary: A Python package for analyzing thin retinal vessels and creating vessels-thickness based weight maps
 Author-email: João Paulo Menezes Linaris <joaolinaris@gmail.com>
 License-Expression: MIT
-Project-URL: Homepage, https://github.com/J-Linaris/retinal_thin_vessels
-Project-URL: Repository, https://github.com/J-Linaris/retinal_thin_vessels
+Project-URL: Homepage, https://github.com/J-Linaris/retinal-thin-vessels
+Project-URL: Repository, https://github.com/J-Linaris/retinal-thin-vessels
 Keywords: retina,retinal,retinal-vessels,vessel-segmentation,image-analysis,medical-imaging,deep-learning,weight-map,pytorch,thin-vessels,image-segmentation,binary-masks,binary-mask
 Classifier: Intended Audience :: Science/Research
 Classifier: Operating System :: POSIX :: Linux
