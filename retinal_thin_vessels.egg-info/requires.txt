@@ -3,3 +3,4 @@ torch
 scikit-image
 scikit-learn
 Pillow
+sknw
