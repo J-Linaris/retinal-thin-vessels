@@ -65,7 +65,11 @@ def __get_weight_mask(seg_mask, weights_function=0):
                                     W[i+dx][j+dy] = 2/(value**2)
                                 case 1:
                                     W[i+dx][j+dy] = (distances[i+dx][j+dy]+1) / (value**2)
-    
+
+    # Assign lowest weight greater than zero to background to avoid model over-prediction of positives
+    w_min = np.unique(W)[1]
+    W = np.logical_or(W, w_min)
+
     return W
 
 def get_weight_mask(seg_mask, weights_function=0, seg_mask_type="ground truth"):
