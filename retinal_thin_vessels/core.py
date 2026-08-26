@@ -31,16 +31,16 @@ def __get_filtered_mask(seg_mask, ceil=1.0):
     # Obtaining the skeleton
     skeleton_medial_axis = medial_axis(closed_seg_mask, return_distance=False)
 
-    # Get the distance of each pixel to the background
+    # Gets the distance of each pixel to the background
     distances = distance_transform_edt(closed_seg_mask)
 
     # Skeleton pruning
     skeleton_medial_axis = skel_pruning_DSE(skeleton_medial_axis, distances, np.ceil(distances.max()))
     
-    # Compute the skeleton with the values of the distances
+    # Computes the skeleton with the values of the distances
     dist_skel = np.where(skeleton_medial_axis>0, distances, 0) 
 
-    # Get unique values of dist_skel excluding 0 (values of the radius of vessels)
+    # Gets unique values of dist_skel excluding 0 (values of the radius of vessels)
     values_dist_skel = np.unique(dist_skel)[1:] 
 
     #~~~~~~~~~~~~~~~~~~~~~~~Segmentation mask recriation with thin vessels only~~~~~~~~~~~~~~~~~~
