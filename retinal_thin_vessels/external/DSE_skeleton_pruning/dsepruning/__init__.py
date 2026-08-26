@@ -1,1 +1,1 @@
-from dsepruning.dsepruning import skel_pruning_DSE
+from .dsepruning import skel_pruning_DSE

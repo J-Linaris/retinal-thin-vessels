@@ -1,7 +1,7 @@
 import sknw
 import numpy as np
 from skimage.draw import line
-from dsepruning.dse_helper import recnstrc_by_disk, get_weight
+from .dse_helper import recnstrc_by_disk, get_weight
 # from .dse_helper import recnstrc_by_disk, get_weight -----> original (didn't work)
 
 def flatten(l):
